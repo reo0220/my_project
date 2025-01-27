@@ -12,8 +12,8 @@ class TopController extends Controller {
         $sampleValue = "sample テキストです。";
 
         //データベース操作
-        $records = DB::connection('mysql')->select("select * from items");
-        $name = $records[0]->name;
+        //$records = DB::connection('mysql')->select("select * from items");
+        //$name = $records[0]->name;
 
         //データ追加
         //$insertResult = DB::connection('mysql')->insert("insert into items (id,name,price) value(null,'メロン',2000)");
