@@ -16,10 +16,10 @@ class LoginController extends Controller{
             "isLoginActive" => isset($loginId)
         ];
 
-        return view("login/index",$variables);
+        return view("login/index",["variables" => $variables]);
     }
 
-    //ログイン処理
+    //アカウント登録処理
     public function register(Request $request){
 
         //formからの入力情報の取得
@@ -36,13 +36,23 @@ class LoginController extends Controller{
         // count(*) の値が 0 より大きい場合は同一 id の record が存在することになるため、処理を終了する。
         $record = (array)($oldRecords[0]);
         if($record["count(*)"]>0){
-            
+            return responce("すでに存在するアカウント id です。<a href='/login'>前のページへ戻る</a>");
         }
 
+        // ここまで正常に処理が進んだら既存のレコードも存在しないため、入力情報をもとにレコードを追加する。
+        $records = DB::connection('mysql')->insert("insert into users (id_str,password) values ('" . $id . "','" . $password . "')");
 
+        if(count($records) == 0){
+            return response("ユーザーデータの登録処理中に問題が発生しました。<a href='/login'>前のページへ戻る</a>");
+        }
+
+        $request->session()->put("login_id",$records[0]->id);
         
-        return view("login/register",[]);
+        return response("登録が完了しました。<a href='/login'>前のページへ戻る</a>");
+        
     }
+
+    //ログアウト処理
     public function unregister(Request $request){
         return view("login/unregister",[]);
     }
