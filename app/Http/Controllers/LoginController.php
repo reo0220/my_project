@@ -53,7 +53,9 @@ class LoginController extends Controller{
     }
 
     //ログアウト処理
-    public function unregister(Request $request){
-        return view("login/unregister",[]);
+    public function unregister(Request $request)
+    {
+        $request->session()->flush();
+        return response("ログアウトが完了しました。<a href='/login'>前のページに戻る</a>");    
     }
 }
