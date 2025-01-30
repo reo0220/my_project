@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title></title>
+
+    <link rel="stylesheet" href="/css/build/login/index.css">
 </head>
 
-<body>
-
+<body class="login">
     <?php if($variables["isLoginActive"]){?>
+        <h2 class="title">ログイン状態</h2>
         <a href="/login/unregister">ログアウト</a>
     <?php }else{?>
-        <h2>新規登録</h2>
+        <h2 class="title">新規登録</h2>
         <form method="post" action="/login/register">
             @csrf
             <div>
@@ -27,7 +29,8 @@
                 <input type="submit" value="送信">
             </div>
         </form>
-        <h2>ログイン</h2>
+
+        <h2 class="title">ログイン</h2>
         <form method="post" action="/login/sign_in">
             @csrf
             <div>
