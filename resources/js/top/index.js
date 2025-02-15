@@ -3,6 +3,8 @@ import {ref} from "vue";
 
 const application = {
     setup(){
+        const page = ref(1);
+
         const name = ref("");
         const validateResult = ref("");
 
@@ -23,7 +25,9 @@ const application = {
 
         name,
         validate,
-        validateResult
+        validateResult,
+
+        page,
        };
     },
 };
