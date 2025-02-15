@@ -1,10 +1,9 @@
 import * as Vue from "vue";
 import {ref} from "vue";
+import SampleComponent from "./SampleComponent.vue";
 
 const application = {
     setup(){
-        const page = ref(1);
-
         const name = ref("");
         const validateResult = ref("");
 
@@ -26,10 +25,12 @@ const application = {
         name,
         validate,
         validateResult,
-
-        page,
        };
     },
+
+    components : {
+        "sample-component" : SampleComponent,
+    }
 };
 
 try{
