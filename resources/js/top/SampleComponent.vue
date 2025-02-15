@@ -2,18 +2,18 @@
   <section class="sample-component">
     <section class="tab-layout">
       <div class="tabs">
-        <button class="tab" v-on:click="page = 1">tab1</button>
-        <button class="tab" v-on:click="page = 2">tab2</button>
-        <button class="tab" v-on:click="page = 3">tab3</button>
+        <button class="tab" v-on:click="page = 1">{{ tabName1 }}</button>
+        <button class="tab" v-on:click="page = 2">{{ tabName2 }}</button>
+        <button class="tab" v-on:click="page = 3">{{ tabName3 }}</button>
       </div>
       <div class="content" v-bind:class="{ show: page == 1 }">
-        <p>page1</p>
+        <p>{{ tabBody1 }}</p>
       </div>
       <div class="content" v-bind:class="{ show: page == 2 }">
-        <p>page2</p>
+        <p>{{ tabBody2 }}</p>
       </div>
       <div class="content" v-bind:class="{ show: page == 3 }">
-        <p>page3</p>
+        <p>{{ tabBody3 }}</p>
       </div>
     </section>
   </section>
@@ -25,12 +25,19 @@ import Axios from "axios";
 
 export default {
   setup(props, context) {
-    const page = ref(1); // 追加
+    const page = ref(1); 
     return {
       page,
     };
   },
-  props: {},
+  props: {
+    tabName1 : String,
+    tabName2 : String,
+    tabName3 : String,
+    tabBody1 : String,
+    tabBody2 : String,
+    tabBody3 : String,
+  },
 };
 </script>
 
