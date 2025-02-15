@@ -10,14 +10,18 @@
 </head>
 
 <body>
-    Top Controller!!
-    <?= $sampleValue ?>
-
     <header>
         <a href="/login">
             <h2>ログイン</h2>
         </a>
     </header>
+
+    <main>
+        <h2 v-html="title"></h2>
+        <button v-on:click="buttonClick">変更</button>
+    </main>
+
+    <script src="/js/build/top/index.js"></script>
 </body>
 
 </html>
